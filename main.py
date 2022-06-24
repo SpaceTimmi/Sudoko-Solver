@@ -10,7 +10,7 @@
 def rc_to_col(row, column):
    return ((row * 9) + column)
 
-ALL-VALS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+ALL_VALS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 B = False
 
 BD1 =  [B, B, B, B, B, B, B, B, B,
