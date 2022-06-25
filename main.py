@@ -6,7 +6,6 @@
 
 # Data Defintions
 
-
 # Natural, Natural -> Natural
 # Convert a give row and column into a position
 def rc_to_col(row, column):
@@ -141,6 +140,9 @@ UNITS = ROWS + COLS + BOXES
 
 # Board -> Board or Boolean
 # This function takes a board and returns a solved board if it is solvable otherwise it returns false
+
+# !!! Add test for this function in the tests.py file.
+
  
  
 
