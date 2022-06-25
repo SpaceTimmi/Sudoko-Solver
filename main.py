@@ -177,7 +177,35 @@ def solved(board):
 
 # Board -> (ListOf Boards)
 # produce the next list of valid boards from a given board.
-def build_next_boards(boards):
-    pass 
+def build_next_boards(board):
+    position = find_blank_position(board)  #board -> position
+    all_boards = fill_all(position, board) #position, board -> (ListOf Boards)
+    result = valid_boards(lob)             #(listOf Boards) -> (ListOf Boards)
+    return result 
+
+
+# Helper functions for build_next_boards:
+def find_blank_position(board):
+    for index, elem in enumerate(board):
+        if elem is False: return index
+    # Assuming that all boards that get to find_blank_position has atleast one False in the board.    
+
+
+# Loops through 1 to 9 and adds each value [1,9] to the given position for 9 new boards.
+def fill_all(position, board):
+    lob = []
+    for i in range (1, 10):
+        new_board = board.copy()
+        new_board[position] = i
+        lob.append(new_board)
+    return lob
+         	
+
+def valid_boards(lob):
+    pass
+
+
+
+
 
 
