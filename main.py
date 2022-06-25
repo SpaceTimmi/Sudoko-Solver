@@ -134,20 +134,50 @@ BOXES = [[0, 1, 2, 9, 10, 11, 18, 19, 20]
 # Units represent all the possible locations where no duplicate number is supposed to be found. 
 UNITS = ROWS + COLS + BOXES
 
+# !!! Add test for all functions in the tests.py file.
+
+# Board -> Board, Boolean
+# Takes a board as input and returns a solved board or False if the board is unsolvable.
+
+# The algorith checks if the given board has been solved, if yes, it returns the solved board
+# else it sends current board to build_next_boards which returns a list all possible valid 
+# boards from the current position and sends them to solve_lob.
+def solve_board(board):
+    if solved(board): return board
+    else:
+       next_boards =  build_next_boards(board)
+       solve_lob(next_boards)
 
 
-# Functions
 
-# Board -> Board or Boolean
-# This function takes a board and returns a solved board if it is solvable otherwise it returns false
+# (ListOf Boards) -> (ListOf Boards)
+# Takes a list of possible next boards from a position and sends only the valid boards to solve.
 
-# !!! Add test for this function in the tests.py file.
+# The algorithm here checks if the first board in the list of boards leads to a solution
+# if it does it just returns the solution else it will the check the  other valid boards. 
+# We can assume all boards that get to solve_lob is valid board. 
+def solve_lob(lob):
+    if len(lob) == 0: return False
+    else:
+	check = solve_board(lob[0])
+        if check is not False: return check
+        else solve_lob(lob[1::])
 
- 
- 
+
+
+# Board -> Boolean
+# produce true if given board has been solved, otherwise produce false.
+
+# The algorithm loops through all the positions of a given board and returns true if all
+# positions have been filled i.e has a natural else it returns False.
+def solved(board):
+    return all(str(elem).isdigit() for elem in board) 
 
 
 
-
+# Board -> (ListOf Boards)
+# produce the next list of valid boards from a given board.
+def build_next_boards(boards):
+    pass 
 
 
