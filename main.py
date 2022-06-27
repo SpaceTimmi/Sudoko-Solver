@@ -144,8 +144,7 @@ def solve_board(board):
         return board
     else:
         next_boards = build_next_boards(board)
-        solve_lob(next_boards)
-
+        return solve_lob(next_boards)
 
 # (ListOf Boards) -> (ListOf Boards)
 # Takes a list of possible next boards from a position and sends only the valid boards to solve.
@@ -161,7 +160,7 @@ def solve_lob(lob):
         if check is not False:
             return check
         else:
-            solve_lob(lob[1::])
+            return solve_lob(lob[1::])
 
 
 # Board -> Boolean
@@ -218,4 +217,8 @@ def no_duplicates(board):
 		if len(result) == len(consideration) : count+= 1
 	if len(board) == count: return True
 	else: return False
+
+result = solve_board(BD2)
+print(result)
+print(BD2s)
 	
