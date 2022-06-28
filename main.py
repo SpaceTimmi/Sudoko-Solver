@@ -152,6 +152,8 @@ def solve_board(board):
 # The algorithm here checks if the first board in the list of boards leads to a solution
 # if it does it just returns the solution else it will the check the  other valid boards.
 # We can assume all boards that get to solve_lob is valid board.
+
+
 def solve_lob(lob):
     if len(lob) == 0:
         return False
@@ -168,8 +170,15 @@ def solve_lob(lob):
 
 # The algorithm loops through all the positions of a given board and returns true if all
 # positions have been filled i.e has a natural else it returns False.
+
+
 def solved(board):
     return all(str(elem).isdigit() for elem in board)
+
+
+assert(solved(BD2s)) == True
+assert(solved(BD2)) == False
+
 
 # Board -> (ListOf Boards)
 # produce the next list of valid boards from a given board.
@@ -190,6 +199,10 @@ def find_blank_position(board):
     # Assuming that all boards that get to find_blank_position has atleast one False in the board.
 
 
+assert(find_blank_position(BD1)) == 0
+assert(find_blank_position(BD2)) == 3
+
+
 # Loops through 1 to 9 and adds each value [1,9] to the given position for 9 new boards.
 def fill_all(position, board):
     lob = []
@@ -204,21 +217,22 @@ def valid_boards(lob):
 	confirmed_boards = list()
 	for board in lob:
 		board_arr = np.array(board)
-		if no_duplicates(board_arr) is True: confirmed_boards.append(board_arr)
+		if no_duplicates(board_arr) is True: confirmed_boards.append(list(board_arr))
 	return confirmed_boards
 
-
 def no_duplicates(board):
-	count = 0
-	for unit in UNITS:
-		pos = board[unit] 
-		consideration = [elem for elem in pos if not isinstance(elem, bool)] 
-		result = [elem for elem, count in Counter(consideration).items() if not count > 1]
-		if len(result) == len(consideration) : count+= 1
-	if len(board) == count: return True
-	else: return False
+    count = 0
+    for unit in UNITS:
+        pos = board[unit]
+        consideration = (list (filter(bool, pos)))
+        result = [elem for elem, count in Counter(consideration).items() if not count > 1]
+        if len(result) != len(consideration):
+            return False
+        else: count += 1
+        if count == len(board): return True
+        else: return False
 
-result = solve_board(BD2)
-print(result)
+
+print(solve_board(BD2))
+print("\n")
 print(BD2s)
-	
