@@ -221,18 +221,13 @@ def valid_boards(lob):
 	return confirmed_boards
 
 def no_duplicates(board):
-    count = 0
     for unit in UNITS:
         pos = board[unit]
         consideration = (list (filter(bool, pos)))
         result = [elem for elem, count in Counter(consideration).items() if not count > 1]
         if len(result) != len(consideration):
             return False
-        else: count += 1
-        if count == len(board): return True
-        else: return False
+        return True
 
+ #zz
 
-print(solve_board(BD2))
-print("\n")
-print(BD2s)
