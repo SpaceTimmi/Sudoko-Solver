@@ -1,3 +1,3 @@
 # Sudoku-Solver
 
-# Backend for a sudoku solver website
+# Building a brute force algorithm that solves sudoku.
